@@ -1,0 +1,5 @@
+### Crear artículo
+POST http://127.0.0.1:5000/articles/create
+Content-Type: application/x-www-form-urlencoded
+
+title=Artículo+de+Prueba&content=Contenido+del+artículo+de+prueba&category=General&status=Publicado

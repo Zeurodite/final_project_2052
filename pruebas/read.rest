@@ -1,0 +1,2 @@
+### Obtener todos los artículos (vista HTML protegida)
+GET http://127.0.0.1:5000/articles

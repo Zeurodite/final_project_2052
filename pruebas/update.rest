@@ -1,0 +1,5 @@
+### Editar artículo con ID específico
+POST http://127.0.0.1:5000/articles/edit/1
+Content-Type: application/x-www-form-urlencoded
+
+title=Título+editado&content=Contenido+modificado&category=Cambiada&status=Borrador

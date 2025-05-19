@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Mis Artículos</h2>
+    <a href="{{ url_for('article.create_article') }}" class="btn btn-success mb-3">Nuevo Artículo</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Categoría</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>{{ article.category }}</td>
+                <td>{{ article.publication_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ article.status }}</td>
+                <td>
+                    <a href="{{ url_for('article.edit_article', article_id=article.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{{ url_for('article.delete_article', article_id=article.id) }}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5">No hay artículos.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
