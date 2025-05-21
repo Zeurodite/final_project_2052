@@ -50,3 +50,15 @@ class Curso(db.Model):
     titulo = db.Column(db.String(100), nullable=False)
     descripcion = db.Column(db.Text, nullable=False)
     profesor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+class Article(db.Model):
+    __tablename__ = 'article'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    category = db.Column(db.String(100), nullable=False)
+    publication_date = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.String(20), nullable=False)  # 'Borrador' o 'Publicado'
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    author = db.relationship('User', backref=db.backref('articles', lazy=True))

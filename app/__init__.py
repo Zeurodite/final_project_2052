@@ -5,7 +5,6 @@ from config import Config
 
 db = SQLAlchemy()
 login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
 
 def create_app():
     app = Flask(__name__)
@@ -14,12 +13,12 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
 
-    from app.routes import main 
-    # from app.test_routes import main
-    
+    from app.routes import main
     from app.auth_routes import auth
+    from app.article_routes import article_bp
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
+    app.register_blueprint(article_bp)
 
     return app
